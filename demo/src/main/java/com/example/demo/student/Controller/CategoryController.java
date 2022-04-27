@@ -1,5 +1,7 @@
-package com.example.demo.student;
+package com.example.demo.student.Controller;
 
+import com.example.demo.student.Model.Category;
+import com.example.demo.student.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,22 +10,15 @@ import java.util.List;
 
 @RestController
 public class CategoryController {
-    private final CategoryService categoryService;
-
     @Autowired
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
-
-
+    private CategoryService categoryService;
 
     @GetMapping("/categories")
-    public List<Category> getCategories(Model model) {
+    public List<Category> getCategories() {
         return categoryService.getCategories();
     }
 
-
-    @PostMapping("/addCategory")
+    @PostMapping()
     public void addCategory(@RequestBody Category category) {
         categoryService.addCategory(category);
     }

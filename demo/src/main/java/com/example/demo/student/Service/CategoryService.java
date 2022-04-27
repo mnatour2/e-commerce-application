@@ -1,5 +1,7 @@
-package com.example.demo.student;
+package com.example.demo.student.Service;
 
+import com.example.demo.student.Model.Category;
+import com.example.demo.student.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +12,8 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
-    private final CategoryRepository categoryRepository;
-
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository) {
-        this.categoryRepository = categoryRepository;
-    }
-
+    private  CategoryRepository categoryRepository;
 
     public List<Category> getCategories(){
         return categoryRepository.findAll();
